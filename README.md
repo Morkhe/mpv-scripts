@@ -28,5 +28,15 @@ Sometimes you have unstable internet connection, or YouTube server dies, or your
 
 Notice: it **WILL NOT** save progress between MPV launches or whatever. It just reopens current video, immediately seeking the moment that was playing before.
 
+## keep-session.lua
+This script automatically saves the current playlist and can reload it on startup if the playlist is empty, or if the correct command is sent via script-messages.
+It remembers the playlist position the player was in when shutdown and reloads the playlist at that entry.
+
+##sub-folder-titles.lua
+This script iterates through loaded external subtitles track.
+If track is placed in subdirectory of subtitles folder, it will be renamed to parent folder.
+
+By default file *./subs/release group/ep1.ass* will be shown as *ass (ass)*. This script will rename it to *release group (ass)*.
+
 ## Installation
 Copy wanted .lua files to `MPV_CONFIG_PATH/scripts`. Optionally change keybinds and default values inside scripts. You're set to go.
