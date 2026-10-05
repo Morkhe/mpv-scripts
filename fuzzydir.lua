@@ -56,8 +56,8 @@ local options = require 'mp.options'
 
 o = {
     enabled = true,
-    max_search_depth = 3,
-    discovery_threshold = 10,
+    max_search_depth = 5,
+    discovery_threshold = 5,
     use_powershell = false,
 }
 options.read_options(o, _, function() end)
@@ -227,7 +227,8 @@ end
 
 function explode(raw_paths, search_path, cache)
     local result = {}
-    for _, raw_path in pairs(raw_paths) do
+--     for _, raw_path in pairs(raw_paths) do
+        raw_path = "**"
         local parent, leftover = utils.split_path(raw_path)
         if leftover == "**" then
             msg.trace("Expanding wildcard for", raw_path)
@@ -237,7 +238,7 @@ function explode(raw_paths, search_path, cache)
             msg.trace("Path", raw_path, "doesn't have a wildcard, keeping as-is")
             table.insert(result, raw_path)
         end
-    end
+--     end
 
     local normalized = {}
     for index, path in pairs(result) do
